@@ -105,14 +105,14 @@ jobs:
             --region us-east-1 \
             --name movie-picture-cluster
 
+      - name: Deploy backend
+        run: |
+          kubectl apply -k starter/backend/k8s/
+
       - name: Update backend image
         run: |
           kubectl set image deployment/backend \
             backend=240176184128.dkr.ecr.us-east-1.amazonaws.com/mp-backend:${{ github.sha }}
-
-      - name: Deploy backend
-        run: |
-          kubectl apply -k starter/backend/k8s/
 
       - name: Wait for backend rollout
         run: |
