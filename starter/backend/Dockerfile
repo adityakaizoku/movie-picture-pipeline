@@ -21,4 +21,4 @@ COPY . /app
 
 EXPOSE 5000
 
-CMD ["uwsgi", "--http", "0.0.0.0:5000", "--master", "--enable-threads", "--manage-script-name", "--mount", "/=__init__:app"]
+CMD ["uwsgi", "--http", "0.0.0.0:5000", "--master", "--enable-threads", "--chdir", "/", "--manage-script-name", "--mount", "/=app:app"]
