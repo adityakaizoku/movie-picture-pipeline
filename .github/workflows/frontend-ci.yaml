@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Format ESLint config
+        run: npx prettier --write .eslintrc.js
+
       - name: Run lint
         run: npm run lint
 
