@@ -89,9 +89,9 @@ jobs:
         with:
           context: starter/frontend
           push: true
-          tags: 240176184128.dkr.ecr.us-east-1.amazonaws.com/mp-frontend:latest
+          tags: 240176184128.dkr.ecr.us-east-1.amazonaws.com/mp-frontend:${{ github.sha }}
           build-args: |
-            REACT_APP_MOVIE_API_URL=http://localhost:5000
+            REACT_APP_MOVIE_API_URL=http://k8s-default-backend-bba314444c-d816ff19c10299cf.elb.us-east-1.amazonaws.com
 
       - name: Setup kubectl
         uses: azure/setup-kubectl@v4
@@ -111,7 +111,7 @@ jobs:
       - name: Update frontend image
         run: |
           kubectl set image deployment/frontend \
-            frontend=240176184128.dkr.ecr.us-east-1.amazonaws.com/mp-frontend:latest
+            frontend=240176184128.dkr.ecr.us-east-1.amazonaws.com/mp-frontend:${{ github.sha }}
 
       - name: Wait for frontend rollout
         run: |
