@@ -410,3 +410,31 @@ kustomize build | kubectl apply -f -
 ## License
 
 [License](LICENSE.md)
+
+## Deployment Evidence
+
+### Frontend Application
+
+Frontend EKS Service URL:
+
+http://k8s-default-frontend-16528f79dd-6cd288525334500e.elb.us-east-1.amazonaws.com
+
+The frontend application is deployed successfully on Amazon EKS and displays the movie list.
+
+![Frontend Application](submission/frontend-working.png)
+
+### Backend Application
+
+Backend EKS Service URL:
+
+http://k8s-default-backend-bba314444c-d816ff19c10299cf.elb.us-east-1.amazonaws.com/movies
+
+The backend API is deployed successfully on Amazon EKS and returns the list of movies.
+
+![Backend API](submission/backend-working.png)
+
+### Kubernetes Deployment
+
+The following screenshot shows the frontend and backend pods, services, deployments, and ReplicaSets running successfully on Amazon EKS.
+
+![Kubernetes Resources](submission/kubectl-get-all.png)
